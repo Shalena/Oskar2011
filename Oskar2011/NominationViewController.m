@@ -111,7 +111,28 @@
 - (void)changeAscending:(BOOL)ascending
 {
     self.ascending = !self.ascending;
+    [self showActionSheet:self.ascending];
+    
+}
+
+- (void)changeAscendingForSortingByName:(BOOL)ascending
+{
+    self.ascending = !self.ascending;
     [self sortByName:self.ascending];
+    
+}
+
+- (void)changeAscendingForSortingByCompany:(BOOL)ascending
+{
+    self.ascending = !self.ascending;
+    [self sortByCompany:self.ascending];
+    
+}
+
+- (void)changeAscendingForSortingByDetail:(BOOL)ascending
+{
+    self.ascending = !self.ascending;
+    [self sortByDetail:self.ascending];
     
 }
 
@@ -134,13 +155,67 @@
 }
 
 
-
-- (void) doSomething: (NSString *) title; {
-    NSString *newTitle = @"Bardak";
-    self.title = newTitle;
+- (void)sortByCompany:(BOOL)ascending {
+    
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"company" ascending:ascending];
+    self.nomination.nominees = [self.nomination.nominees sortedArrayUsingDescriptors:@[ sortDescriptor ]];
+    [self.tableView reloadData];
 }
 
 
+- (void)sortByDetail:(BOOL)ascending {
+    
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"detail" ascending:ascending];
+    self.nomination.nominees = [self.nomination.nominees sortedArrayUsingDescriptors:@[ sortDescriptor ]];
+    [self.tableView reloadData];
+}
+
+
+- (void)showActionSheet:(BOOL)ascending {
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose the Sorting Type"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:@"Delete it"
+      
+                                                    otherButtonTitles:@"Sort By Title", @"Sort By Company", @"Sort By Detail", nil];
+    actionSheet.tag = 1;
+    
+     [actionSheet showInView:self.view];
+    
+    
+    
+}
+
+    
+    - (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+        
+        switch (actionSheet.tag) {
+            case 1: {
+                switch (buttonIndex) {
+                    case 0:
+                        [self changeAscendingForSortingByName:self.ascending];
+                        break;
+                    case 1:
+                        [self changeAscendingForSortingByCompany:self.ascending];
+                        break;
+                    case 2:
+                        [self changeAscendingForSortingByDetail:self.ascending];
+                        break;
+                                        default:
+                        break;
+                }
+                break;
+            }
+            default:
+                break;
+        }
+    }
+    
+    
+    
 
 @end
 
