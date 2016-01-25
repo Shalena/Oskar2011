@@ -38,7 +38,7 @@
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
     [someButton setBackgroundImage:image forState:UIControlStateNormal];
     [someButton addTarget:self
-               action:@selector(changeAscending:)
+               action:@selector(showActionSheet:)
      forControlEvents:UIControlEventTouchUpInside];
     // [self.view addSubview:someButton];
 
@@ -108,12 +108,7 @@
 
 #pragma mark - Sorting
 
-- (void)changeAscending:(BOOL)ascending
-{
-    self.ascending = !self.ascending;
-    [self showActionSheet:self.ascending];
-    
-}
+
 
 - (void)changeAscendingForSortingByName:(BOOL)ascending
 {
@@ -124,7 +119,7 @@
 
 - (void)changeAscendingForSortingByCompany:(BOOL)ascending
 {
-    self.ascending = !self.ascending;
+   self.ascending = !self.ascending;
     [self sortByCompany:self.ascending];
     
 }
@@ -178,7 +173,7 @@
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose the Sorting Type"
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
-                                               destructiveButtonTitle:@"Delete it"
+                                               destructiveButtonTitle:nil
       
                                                     otherButtonTitles:@"Sort By Title", @"Sort By Company", @"Sort By Detail", nil];
     actionSheet.tag = 1;
