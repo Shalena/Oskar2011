@@ -15,9 +15,12 @@
 
 @interface NominationViewController ()
 @property (strong, nonatomic) NSArray *buttons;
+@property (strong, nonatomic) NSArray *filteredArray;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) UIButton *someButton;
 @property (weak, nonatomic) UIBarButtonItem *sortButton;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+
 
 @property (nonatomic) BOOL ascending;
 
@@ -31,7 +34,7 @@
     self.title = self.nomination.title;
     
    
-    // Кнопка сортировки
+#pragma mark Кнопка сортировки
     
     UIImage* image = [UIImage imageNamed:@"owl.jpg"];
     CGRect frameimg = CGRectMake(0,0, 20,20);
@@ -46,14 +49,28 @@
    // self.navigationItem.rightBarButtonItem = sortButton;
     
   
+   #pragma mark Кнопка фильтрации
+    
+    
+    UIImage* image2 = [UIImage imageNamed:@"owl2.jpg"];
+    CGRect frameimg2 = CGRectMake(0,0, 20,20);
+    UIButton *someButton2 = [[UIButton alloc] initWithFrame:frameimg2];
+    [someButton2 setBackgroundImage:image2 forState:UIControlStateNormal];
+    [someButton2 addTarget:self
+                   action:@selector(showFiltred)
+         forControlEvents:UIControlEventTouchUpInside];
+    // [self.view addSubview:someButton];
+    
+    UIBarButtonItem *filtrButton =[[UIBarButtonItem alloc] initWithCustomView:someButton2];
+    // self.navigationItem.rightBarButtonItem = sortButton;
+
    
-    NSArray *buttons = [[NSArray alloc] initWithObjects:self.addButton,sortButton,nil];
+    NSArray *buttons = [[NSArray alloc] initWithObjects:self.addButton,sortButton,filtrButton, nil];
     self.navigationItem.rightBarButtonItems = buttons;
    
+    [self showFiltred];
     
-    
-    
-    
+  
     }
 
 - (void)didReceiveMemoryWarning {
@@ -63,14 +80,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.nomination.nominees.count;
+    return self.filteredArray.count;
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     OSNomineesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"nomineesCell"];
-    OSNominees *nominees = self.nomination.nominees[indexPath.row];
+    OSNominees *nominees = self.filteredArray[indexPath.row];
     
     [cell configureWithNominees:nominees];
     return cell;
@@ -85,7 +102,7 @@
         NomineeViewController *controller = segue.destinationViewController;
         OSNomineesTableViewCell *cell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-        controller.nominee = self.nomination.nominees[indexPath.row];
+        controller.nominee = self.filteredArray[indexPath.row];
         
         controller.delegate = self;
     } else if ([segue.identifier isEqualToString:@"addFilm"]) {
@@ -136,7 +153,7 @@
    
     
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:ascending];
-    self.nomination.nominees = [self.nomination.nominees sortedArrayUsingDescriptors:@[ sortDescriptor ]];
+    self.filteredArray = [self.filteredArray sortedArrayUsingDescriptors:@[ sortDescriptor ]];
     [self.tableView reloadData];
 }
 
@@ -145,7 +162,7 @@
     
     
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:ascending];
-    self.nomination.nominees = [self.nomination.nominees sortedArrayUsingDescriptors:@[ sortDescriptor ]];
+    self.filteredArray = [self.filteredArray sortedArrayUsingDescriptors:@[ sortDescriptor ]];
     [self.tableView reloadData];
 }
 
@@ -154,7 +171,7 @@
     
     
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"company" ascending:ascending];
-    self.nomination.nominees = [self.nomination.nominees sortedArrayUsingDescriptors:@[ sortDescriptor ]];
+    self.filteredArray = [self.filteredArray sortedArrayUsingDescriptors:@[ sortDescriptor ]];
     [self.tableView reloadData];
 }
 
@@ -163,7 +180,7 @@
     
     
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"detail" ascending:ascending];
-    self.nomination.nominees = [self.nomination.nominees sortedArrayUsingDescriptors:@[ sortDescriptor ]];
+    self.filteredArray = [self.filteredArray sortedArrayUsingDescriptors:@[ sortDescriptor ]];
     [self.tableView reloadData];
 }
 
@@ -210,7 +227,30 @@
     }
     
     
+
+#pragma mark Filtring
+
+
+- (void)showFiltred  {
+
+    NSString *filtrString = self.textField.text;
+    NSPredicate *myPredicate = [NSPredicate predicateWithFormat:@"title CONTAINS[cd] %@", filtrString];
+
+    if (filtrString.length > 0) {
+        
+        self.filteredArray =  [self.nomination.nominees filteredArrayUsingPredicate:myPredicate];
+        
+    } else {
+        self.filteredArray = self.nomination.nominees;
+    }
+
+        
+
+    [self.tableView reloadData];
+
     
+}
+
 
 @end
 

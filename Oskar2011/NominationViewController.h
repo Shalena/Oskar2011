@@ -26,7 +26,7 @@
 - (void)sortByCompany:(BOOL)ascending;
 - (void)sortByDetail:(BOOL)ascending;
 
-
+- (void)showFiltred;
 
 
 @end

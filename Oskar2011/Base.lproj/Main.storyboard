@@ -173,6 +173,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="A46-LG-JWz" id="DVb-r4-T22"/>
+                        <outlet property="textField" destination="sVF-Ch-Ay9" id="NAf-Tt-Lwf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xX0-eC-R1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
