@@ -28,5 +28,8 @@
 
 - (void)showFiltred;
 
+- (void) hideTextField;
+
+
 
 @end

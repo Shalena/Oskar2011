@@ -32,16 +32,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = self.nomination.title;
-    
+     self.textField.hidden = YES;
    
-#pragma mark Кнопка сортировки
+#pragma mark Кнопка скрыть/показать TextField
     
     UIImage* image = [UIImage imageNamed:@"owl.jpg"];
     CGRect frameimg = CGRectMake(0,0, 20,20);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
     [someButton setBackgroundImage:image forState:UIControlStateNormal];
     [someButton addTarget:self
-               action:@selector(showActionSheet:)
+               action:@selector(hideTextField:)
      forControlEvents:UIControlEventTouchUpInside];
     // [self.view addSubview:someButton];
 
@@ -250,6 +250,19 @@
 
     
 }
+
+
+
+
+
+- (void)hideTextField:(BOOL)ascending
+{
+    
+    self.ascending = !self.ascending;
+    self.textField.hidden = !self.ascending;
+    
+   }
+
 
 
 @end
