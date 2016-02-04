@@ -10,7 +10,8 @@
 #import "OSNomination.h"
 
 
-@interface NominationViewController : UITableViewController <UIActionSheetDelegate>
+@interface NominationViewController : UITableViewController <UIActionSheetDelegate, UITextFieldDelegate>
+
 @property (strong, nonatomic) OSNomination * nomination;
 
 //- (void) doSomething: (NSString *) newTitle;

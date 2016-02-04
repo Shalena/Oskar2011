@@ -33,8 +33,9 @@
     [super viewDidLoad];
     self.title = self.nomination.title;
      self.textField.hidden = YES;
-   
-#pragma mark Кнопка скрыть/показать TextField
+    self.textField.delegate = self;
+    self.textField.returnKeyType = UIReturnKeyDefault;
+  #pragma mark Кнопка скрыть/показать TextField
     
     UIImage* image = [UIImage imageNamed:@"owl.jpg"];
     CGRect frameimg = CGRectMake(0,0, 20,20);
@@ -43,13 +44,12 @@
     [someButton addTarget:self
                action:@selector(hideTextField:)
      forControlEvents:UIControlEventTouchUpInside];
-    // [self.view addSubview:someButton];
+  
 
     UIBarButtonItem *sortButton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
-   // self.navigationItem.rightBarButtonItem = sortButton;
     
   
-   #pragma mark Кнопка фильтрации
+   #pragma mark Кнопка Action Sheet
     
     
     UIImage* image2 = [UIImage imageNamed:@"owl2.jpg"];
@@ -57,13 +57,11 @@
     UIButton *someButton2 = [[UIButton alloc] initWithFrame:frameimg2];
     [someButton2 setBackgroundImage:image2 forState:UIControlStateNormal];
     [someButton2 addTarget:self
-                   action:@selector(showFiltred)
+                   action:@selector(showActionSheet:)
          forControlEvents:UIControlEventTouchUpInside];
-    // [self.view addSubview:someButton];
     
     UIBarButtonItem *filtrButton =[[UIBarButtonItem alloc] initWithCustomView:someButton2];
-    // self.navigationItem.rightBarButtonItem = sortButton;
-
+  
    
     NSArray *buttons = [[NSArray alloc] initWithObjects:self.addButton,sortButton,filtrButton, nil];
     self.navigationItem.rightBarButtonItems = buttons;
@@ -245,9 +243,12 @@
     }
 
         
+    //self.textField.text = @"Tap the Owl to refresh";
 
     [self.tableView reloadData];
-
+    [self.textField resignFirstResponder];
+    
+    
     
 }
 
@@ -257,11 +258,25 @@
 
 - (void)hideTextField:(BOOL)ascending
 {
-    
+  //  self.textField.text = @" ";
     self.ascending = !self.ascending;
     self.textField.hidden = !self.ascending;
+ //   [self.textField becomeFirstResponder];//    вызывает клавиатуру, но в симуляторе это не катит, надо cmd+k
+ 
     
-   }
+
+    }
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    {
+        [self showFiltred];
+        return YES;
+    }
+}
+
+
+
 
 
 
