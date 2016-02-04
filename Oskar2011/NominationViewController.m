@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) UIButton *someButton;
 @property (weak, nonatomic) UIBarButtonItem *sortButton;
-@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (strong, nonatomic) IBOutlet UITextField *textField;
 
 
 @property (nonatomic) BOOL ascending;
@@ -243,10 +243,9 @@
     }
 
         
-    //self.textField.text = @"Tap the Owl to refresh";
-
+  
     [self.tableView reloadData];
-    [self.textField resignFirstResponder];
+ //   [self.textField resignFirstResponder];
     
     
     
@@ -267,14 +266,20 @@
 
     }
 
-- (BOOL) textFieldShouldReturn:(UITextField *)textField
-{
-    {
-        [self showFiltred];
-        return YES;
-    }
-}
+//- (BOOL) textFieldShouldReturn:(UITextField *)textField
+//{
+//    {
+//        [self showFiltred];
+//        return YES;
+//    }
+//}
 
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    [self showFiltred];
+    return YES;
+}
 
 
 
