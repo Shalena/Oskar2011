@@ -69,6 +69,15 @@
     [self showFiltred];
     
   
+    
+    
+    [self.textField addTarget:self
+                  action:@selector(showFiltred)
+        forControlEvents:UIControlEventEditingChanged];
+    
+    
+    
+    
     }
 
 - (void)didReceiveMemoryWarning {
@@ -229,7 +238,7 @@
 #pragma mark Filtring
 
 
-- (void)showFiltred  {
+- (void)showFiltred {
 
     NSString *filtrString = self.textField.text;
     NSPredicate *myPredicate = [NSPredicate predicateWithFormat:@"title CONTAINS[cd] %@", filtrString];
@@ -245,8 +254,7 @@
         
   
     [self.tableView reloadData];
- //   [self.textField resignFirstResponder];
-    
+
     
     
 }
@@ -257,7 +265,7 @@
 
 - (void)hideTextField:(BOOL)ascending
 {
-  //  self.textField.text = @" ";
+ 
     self.ascending = !self.ascending;
     self.textField.hidden = !self.ascending;
  //   [self.textField becomeFirstResponder];//    вызывает клавиатуру, но в симуляторе это не катит, надо cmd+k
@@ -266,24 +274,34 @@
 
     }
 
-//- (BOOL) textFieldShouldReturn:(UITextField *)textField
+
+
+
+//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 //{
-//    {
-//        [self showFiltred];
-//        return YES;
-//    }
+//    [self showFiltred];
+//  
+//    return YES;
 //}
 
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    [self showFiltred];
-    return YES;
-}
+//-(void)textChanged:(UITextField *)textField
+//{
+//    [self showFiltred];
+//}
+//
 
 
 
 
+
+
+
+
+//[self.textField addTarget:self
+//                   action:@selector(textFieldDidChange:)
+//         forControlEvents:UIControlEventEditingChanged];
+//
 
 @end
 
