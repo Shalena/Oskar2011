@@ -14,6 +14,7 @@
 @property (weak, nonatomic) id<NomineeViewControllerDelegate> delegate;
 @property (strong, nonatomic) OSNominees * nominee;
 @property (strong, nonatomic) OSNominees *currentNominee;
+@property (strong, nonatomic) NSArray *nominations;
 @end
 
 

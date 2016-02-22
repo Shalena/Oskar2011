@@ -15,18 +15,3 @@
 
 
 
-
-
-
-
-
-/*
- #import <UIKit/UIKit.h>
- #import "PRPresident.h"
- 
- @interface PRListCell : UITableViewCell
- 
- - (void)configureWithPresident:(PRPresident *)president;
- 
- @end
-*/

@@ -8,20 +8,25 @@
 
 #import "NomineeViewController.h"
 #import "OSNominees.h"
+#import "OSNomination.h"
+#import "NominationListViewController.h"
 
-@interface NomineeViewController ()
+@interface NomineeViewController ()<UIPickerViewDataSource,UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextField *companyTextField;
 @property (weak, nonatomic) IBOutlet UITextField *detailTextField;
+@property (weak, nonatomic) IBOutlet UIPickerView *picker;
+@property (weak, nonatomic) IBOutlet UITextField *nominationTextField;
 
 @end
 
 @implementation NomineeViewController
+@synthesize picker;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.nominationTextField.inputView = self.picker;
     
     self.titleTextField.text = self.nominee.title;
      self.companyTextField.text = self.nominee.company;
@@ -62,12 +67,22 @@
 }
 
 
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return self.nominations.count;
+    
+}
 
 
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+   OSNomination *titleNomination = [self.nominations objectAtIndex:row];
+    return titleNomination.title;
+}
 
-
-
-
+     
 @end
 
 

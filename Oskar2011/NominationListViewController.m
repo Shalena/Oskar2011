@@ -14,7 +14,7 @@
 
 
 @interface NominationListViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (strong, nonatomic) NSArray *nominations;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 

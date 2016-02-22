@@ -8,12 +8,15 @@
 
 #import "OSNomineesTableViewCell.h"
 
-@interface OSNomineesTableViewCell ()
+@interface OSNomineesTableViewCell () {
+    IBOutlet UILabel *titleLabel;
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *titleNomineeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *companyNomineeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailNomineeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nominationLabel;
 
 @end
 

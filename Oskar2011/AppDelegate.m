@@ -14,9 +14,24 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+//    UIViewController *controller = [UIViewController new];
+//    controller.view.backgroundColor = [UIColor redColor];
+//    
+//    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    
+//    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:controller];
+//    [self.window makeKeyAndVisible];
+//    
+//    
+//    UIViewController *secondController = (UIViewController *)[NSUserDefaults standardUserDefaults];
+//    NSString *string = (NSString *)secondController;
+//    
+//    NSLog(@"%lu",(unsigned long)string.length);
+    
+    
+    
+    
     return YES;
 }
 

@@ -12,6 +12,14 @@
 #import "OSNomineesTableViewCell.h"
 #import "NomineeViewController.h"
 #import "OSNomination.h"
+#import "JALeftViewController.h"
+#import <JASidePanelController.h>
+
+
+//#import "JARightViewController.h"
+
+
+
 
 @interface NominationViewController ()
 @property (strong, nonatomic) NSArray *buttons;
@@ -35,7 +43,8 @@
      self.textField.hidden = YES;
     self.textField.delegate = self;
     self.textField.returnKeyType = UIReturnKeyDefault;
-  #pragma mark Кнопка скрыть/показать TextField
+  
+#pragma mark Кнопка скрыть/показать TextField
     
     UIImage* image = [UIImage imageNamed:@"owl.jpg"];
     CGRect frameimg = CGRectMake(0,0, 20,20);
@@ -66,23 +75,24 @@
     NSArray *buttons = [[NSArray alloc] initWithObjects:self.addButton,sortButton,filtrButton, nil];
     self.navigationItem.rightBarButtonItems = buttons;
    
+        
+
+    
     [self showFiltred];
     
-  
-    
-    
     [self.textField addTarget:self
-                  action:@selector(showFiltred)
-        forControlEvents:UIControlEventEditingChanged];
-    
-    
+                       action:@selector(showFiltred)
+             forControlEvents:UIControlEventEditingChanged];
     
     
     }
 
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -277,31 +287,11 @@
 
 
 
-//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-//{
-//    [self showFiltred];
-//  
-//    return YES;
-//}
+- (void)showLeftPanel {
 
+JALeftViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"JALeftViewController"];
 
-//-(void)textChanged:(UITextField *)textField
-//{
-//    [self showFiltred];
-//}
-//
-
-
-
-
-
-
-
-
-//[self.textField addTarget:self
-//                   action:@selector(textFieldDidChange:)
-//         forControlEvents:UIControlEventEditingChanged];
-//
+}
 
 @end
 

@@ -11,7 +11,7 @@
 @interface OSNominees : NSObject
 
 @property (strong, nonatomic) NSString *title;
-//@property (strong, nonatomic) NSArray *image;
+
 @property (strong, nonatomic) NSString *company;
 @property (strong, nonatomic) NSString *detail;
 @property (copy, nonatomic) NSDate *date;
