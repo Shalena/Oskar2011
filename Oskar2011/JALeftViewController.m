@@ -25,59 +25,63 @@
 
 
 
-@interface JALeftViewController ()
+@interface JALeftViewController ()<UITableViewDataSource>
 
 @property (nonatomic, weak) UILabel *label;
-@property (nonatomic, weak) UIButton *hide;
-@property (nonatomic, weak) UIButton *show;
-@property (nonatomic, weak) UIButton *goHome;
-@property (nonatomic, weak) UIButton *goToAddNominee;
-@property (nonatomic, weak) UIButton *changeCenterPanel;
-
 @end
 
 @implementation JALeftViewController
+@synthesize tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blueColor];
+ 
     
-    UILabel *label  = [[UILabel alloc] init];
-    label.font = [UIFont boldSystemFontOfSize:20.0f];
-    label.textColor = [UIColor whiteColor];
-    label.backgroundColor = [UIColor clearColor];
-    label.text = @"Left Panel";
-    [label sizeToFit];
-    label.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
-    [self.view addSubview:label];
-    self.label = label;
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.frame = CGRectMake(20.0f, 70.0f, 200.0f, 40.0f);
-    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
-    [button setTitle:@"Go Home" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(_goHome) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
-    self.hide = button;
     
-        button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.frame = CGRectMake(20.0f, 120.0f, 200.0f, 40.0f);
-    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
-    [button setTitle:@"Add nominee" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(_goToAddNominee) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
-    self.goHome = button;
-    
-   
-    
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.frame = CGRectMake(20.0f, 170.0f, 200.0f, 40.0f);
-    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
-    [button setTitle:@"Change Center Panel" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(_changeCenterPanelTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
-    self.changeCenterPanel = button;
+    [ self.view addSubview:self.tableView];
+
+
 }
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+    
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+  
+    return 3;
+}
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UITableViewCell *cell = nil;
+    
+    if ([tableView isEqual:self.tableView]){
+        static NSString *tableViewCellIdentifier = @"myCells";
+        cell = [tableView dequeueReusableCellWithIdentifier:tableViewCellIdentifier];
+    
+         if (cell == nil) {
+             cell = [[UITableView alloc]
+                     initWithStyle:UITableViewCellStyleDefault
+                     reuseIdentifier:tableViewCellIdentifier];
+         }
+         cell.textLabel.text = [NSString stringWithFormat:@ "Section %ld,
+                                                            Cell %ld",
+                                                (long)indexPath.section
+                                                (long)indexPath.row];
+        }
+         return cell;
+}
+
+
+
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -106,11 +110,7 @@
 
 
 
-- (void)_removeRightPanelTapped:(id)sender {
-    self.sidePanelController.rightPanel = nil;
-    self.goHome.hidden = YES;
-    self.goToAddNominee.hidden = NO;
-}
+
 
 
 

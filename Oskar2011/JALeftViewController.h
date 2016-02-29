@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface JALeftViewController : UIViewController
-
+@property (strong, nonatomic) UITableView *tableView;
 @end
