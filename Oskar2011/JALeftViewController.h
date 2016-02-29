@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JALeftViewController : UIViewController
+@interface JALeftViewController : UITableViewController
 @property (strong, nonatomic) UITableView *tableView;
 @end

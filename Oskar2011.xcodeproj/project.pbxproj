@@ -24,6 +24,7 @@
 		93534B321C1627A100EBF1B3 /* OSNominationsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93534B311C1627A100EBF1B3 /* OSNominationsListCell.m */; };
 		935489901C24931600A02791 /* NomineeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9354898F1C24931600A02791 /* NomineeViewController.m */; };
 		935702BF1BFB8EA8000F3768 /* OSNominees.m in Sources */ = {isa = PBXBuildFile; fileRef = 935702BE1BFB8EA8000F3768 /* OSNominees.m */; };
+		9358177B1C84A28400409A37 /* GoogleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9358177A1C84A28400409A37 /* GoogleViewController.m */; };
 		9366F05A1C7076E1001BFB9B /* sandwich.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9366F0591C7076E1001BFB9B /* sandwich.jpg */; };
 		9366F05D1C708D44001BFB9B /* JALeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9366F05C1C708D44001BFB9B /* JALeftViewController.m */; };
 		936B5C581C233EBC003FC912 /* OSNomineesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 936B5C571C233EBC003FC912 /* OSNomineesTableViewCell.m */; };
@@ -71,6 +72,8 @@
 		9354898F1C24931600A02791 /* NomineeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NomineeViewController.m; sourceTree = "<group>"; };
 		935702BD1BFB8EA8000F3768 /* OSNominees.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNominees.h; sourceTree = "<group>"; };
 		935702BE1BFB8EA8000F3768 /* OSNominees.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNominees.m; sourceTree = "<group>"; };
+		935817791C84A28400409A37 /* GoogleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleViewController.h; sourceTree = "<group>"; };
+		9358177A1C84A28400409A37 /* GoogleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleViewController.m; sourceTree = "<group>"; };
 		9366F0591C7076E1001BFB9B /* sandwich.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sandwich.jpg; sourceTree = "<group>"; };
 		9366F05B1C708D44001BFB9B /* JALeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JALeftViewController.h; sourceTree = "<group>"; };
 		9366F05C1C708D44001BFB9B /* JALeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JALeftViewController.m; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 				93520E5B1BF4FBE700AC5FB0 /* AppDelegate.h */,
 				93520E5C1BF4FBE700AC5FB0 /* AppDelegate.m */,
 				93520E611BF4FBE700AC5FB0 /* Main.storyboard */,
+				935817791C84A28400409A37 /* GoogleViewController.h */,
+				9358177A1C84A28400409A37 /* GoogleViewController.m */,
 				936B5C561C233EBC003FC912 /* OSNomineesTableViewCell.h */,
 				936B5C571C233EBC003FC912 /* OSNomineesTableViewCell.m */,
 				93534B301C1627A100EBF1B3 /* OSNominationsListCell.h */,
@@ -363,6 +368,7 @@
 				935489901C24931600A02791 /* NomineeViewController.m in Sources */,
 				93520E881BF4FD9400AC5FB0 /* OSNomination.m in Sources */,
 				935702BF1BFB8EA8000F3768 /* OSNominees.m in Sources */,
+				9358177B1C84A28400409A37 /* GoogleViewController.m in Sources */,
 				9366F05D1C708D44001BFB9B /* JALeftViewController.m in Sources */,
 				936B5C581C233EBC003FC912 /* OSNomineesTableViewCell.m in Sources */,
 			);
