@@ -16,12 +16,11 @@
 
 #import "JALeftViewController.h"
 #import "JASidePanelController.h"
+#import "UIViewController+JASidePanel.h"
+
+#import "NominationListViewController.h"
 
 #import "NomineeViewController.h"
-
-
-#import "UIViewController+JASidePanel.h"
-#import "NominationListViewController.h"
 
 
 

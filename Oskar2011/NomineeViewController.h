@@ -11,7 +11,7 @@
 @protocol NomineeViewControllerDelegate;
 @interface NomineeViewController : UIViewController
 
-@property (weak, nonatomic) id<NomineeViewControllerDelegate> delegate;
+@property (weak, nonatomic) id<NomineeViewControllerDelegate> delegate;//делегатом является любой объект который поддерживает этот протокол
 @property (strong, nonatomic) OSNominees * nominee;
 @property (strong, nonatomic) OSNominees *currentNominee;
 @property (strong, nonatomic) NSArray *nominations;
@@ -20,8 +20,8 @@
 
 @protocol NomineeViewControllerDelegate <NSObject>
 
-- (void)addNomineeControllerDidCreateNominee:(OSNominees *)nominee;
-- (void)addNomineeControllerDidUpdateNominee;
+- (void)addNomineeControllerDidCreateNominee:(OSNominees *)nominee;//создался фильм
+- (void)addNomineeControllerDidUpdateNominee;// обновился фильм
 
 
 

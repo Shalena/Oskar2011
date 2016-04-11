@@ -370,6 +370,9 @@
                                 <rect key="frame" x="40" y="408" width="509" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="0nN-4d-KiO" id="TSu-5Z-Ppw"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -412,6 +415,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4v2-Qg-0DV"/>
+        <segue reference="mhg-rT-oX8"/>
     </inferredMetricsTieBreakers>
 </document>

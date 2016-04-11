@@ -49,7 +49,7 @@
     
    OSNominees *nominee = self.nominee;
     
-    if (!self.nominee) {
+    if (!self.nominee) { // если редактируем старый объект то  поле  self.nominee !=nil, в случае если мы создаем новый - это поле пустое
         nominee = [OSNominees new];
     }
     
@@ -57,7 +57,7 @@
     nominee.company = self.companyTextField.text;
     nominee.detail = self.detailTextField.text;
  
-   if ([self.delegate respondsToSelector:@selector(addNomineeControllerDidCreateNominee:)] && !self.currentNominee) {
+   if ([self.delegate respondsToSelector:@selector(addNomineeControllerDidCreateNominee:)] && !self.currentNominee) {//проверка что тот объект который указан делегатом реализует этот нужный метод
         [self.delegate addNomineeControllerDidCreateNominee:nominee];
     } else if([self.delegate respondsToSelector:@selector(addNomineeControllerDidUpdateNominee)]){
        [self.delegate addNomineeControllerDidUpdateNominee];
