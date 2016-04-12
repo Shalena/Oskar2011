@@ -15,23 +15,17 @@
 #import "JALeftViewController.h"
 #import <JASidePanelController.h>
 
-
 //#import "JARightViewController.h"
 
-
-
-
 @interface NominationViewController ()
+
 @property (strong, nonatomic) NSArray *buttons;
 @property (strong, nonatomic) NSArray *filteredArray;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) UIButton *someButton;
 @property (weak, nonatomic) UIBarButtonItem *sortButton;
 @property (strong, nonatomic) IBOutlet UITextField *textField;
-
-
 @property (nonatomic) BOOL ascending;
-
 
 @end
 
@@ -40,13 +34,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = self.nomination.title;
-     self.textField.hidden = YES;
+    self.textField.hidden = YES;
     self.textField.delegate = self;
     self.textField.returnKeyType = UIReturnKeyDefault;
   
-#pragma mark Кнопка скрыть/показать TextField
+#pragma mark Кнопка Find (скрыть/показать TextField)
     
-    UIImage* image = [UIImage imageNamed:@"owl.jpg"];
+    UIImage* image = [UIImage imageNamed:@"search.jpg"];
     CGRect frameimg = CGRectMake(0,0, 20,20);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
     [someButton setBackgroundImage:image forState:UIControlStateNormal];
@@ -54,14 +48,12 @@
                action:@selector(hideTextField:)
      forControlEvents:UIControlEventTouchUpInside];
   
-
     UIBarButtonItem *sortButton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
     
-  
-   #pragma mark Кнопка Action Sheet
+ 
+   #pragma mark Кнопка Action Sheet (Sorting out)
     
-    
-    UIImage* image2 = [UIImage imageNamed:@"owl2.jpg"];
+    UIImage* image2 = [UIImage imageNamed:@"sorting"];
     CGRect frameimg2 = CGRectMake(0,0, 20,20);
     UIButton *someButton2 = [[UIButton alloc] initWithFrame:frameimg2];
     [someButton2 setBackgroundImage:image2 forState:UIControlStateNormal];
@@ -70,30 +62,17 @@
          forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *filtrButton =[[UIBarButtonItem alloc] initWithCustomView:someButton2];
-  
-   
     NSArray *buttons = [[NSArray alloc] initWithObjects:self.addButton,sortButton,filtrButton, nil];
     self.navigationItem.rightBarButtonItems = buttons;
-   
-        
-
-    
     [self showFiltred];
-    
     [self.textField addTarget:self
                        action:@selector(showFiltred)
              forControlEvents:UIControlEventEditingChanged];
-    
-    
-    }
-
-
-
+     }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
-}
+    }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -120,7 +99,6 @@
         OSNomineesTableViewCell *cell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         controller.nominee = self.filteredArray[indexPath.row];
-        
         controller.delegate = self;
     } else if ([segue.identifier isEqualToString:@"addFilm"]) {
         NomineeViewController *controller = segue.destinationViewController;
@@ -138,11 +116,7 @@
     [self.tableView reloadData];
 }
 
-
-
 #pragma mark - Sorting
-
-
 
 - (void)changeAscendingForSortingByName:(BOOL)ascending
 {
@@ -162,45 +136,34 @@
 {
     self.ascending = !self.ascending;
     [self sortByDetail:self.ascending];
-    
-}
-
+ }
 
 - (void)sortByDate:(BOOL)ascending {
-   
-    
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:ascending];
     self.filteredArray = [self.filteredArray sortedArrayUsingDescriptors:@[ sortDescriptor ]];
     [self.tableView reloadData];
 }
 
-
 - (void)sortByName:(BOOL)ascending {
-    
-    
+  
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:ascending];
     self.filteredArray = [self.filteredArray sortedArrayUsingDescriptors:@[ sortDescriptor ]];
     [self.tableView reloadData];
 }
 
-
 - (void)sortByCompany:(BOOL)ascending {
-    
-    
+  
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"company" ascending:ascending];
     self.filteredArray = [self.filteredArray sortedArrayUsingDescriptors:@[ sortDescriptor ]];
     [self.tableView reloadData];
 }
 
-
 - (void)sortByDetail:(BOOL)ascending {
-    
     
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"detail" ascending:ascending];
     self.filteredArray = [self.filteredArray sortedArrayUsingDescriptors:@[ sortDescriptor ]];
     [self.tableView reloadData];
 }
-
 
 - (void)showActionSheet:(BOOL)ascending {
     
@@ -211,14 +174,10 @@
       
                                                     otherButtonTitles:@"Sort By Title", @"Sort By Company", @"Sort By Detail", nil];
     actionSheet.tag = 1;
-    
-     [actionSheet showInView:self.view];
-    
-    
-    
+    [actionSheet showInView:self.view];
+  
 }
 
-    
     - (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
         
         switch (actionSheet.tag) {
@@ -242,11 +201,7 @@
                 break;
         }
     }
-    
-    
-
 #pragma mark Filtring
-
 
 - (void)showFiltred {
 
@@ -261,31 +216,17 @@
         self.filteredArray = self.nomination.nominees;
     }
 
-        
-  
     [self.tableView reloadData];
-
-    
-    
+  
 }
-
-
-
-
 
 - (void)hideTextField:(BOOL)ascending
 {
  
     self.ascending = !self.ascending;
     self.textField.hidden = !self.ascending;
- //   [self.textField becomeFirstResponder];//    вызывает клавиатуру, но в симуляторе это не катит, надо cmd+k
- 
-    
-
-    }
-
-
-
+ //   [self.textField becomeFirstResponder];//    вызывает клавиатуру, но в симуляторе  cmd+k
+  }
 
 - (void)showLeftPanel {
 
@@ -294,14 +235,4 @@ JALeftViewController *controller = [self.storyboard instantiateViewControllerWit
 }
 
 @end
-
-
-
-
-
-
-
-
-
-
 

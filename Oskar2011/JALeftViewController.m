@@ -65,8 +65,11 @@
 
 }
 
-
-
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 1) {
+        [self _goToAddNominee];
+    }
+}
 
 
 @end

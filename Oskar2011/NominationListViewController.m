@@ -71,26 +71,21 @@
 }
 
     
-   // controller.title = [self.nominations[indexPath.row] title];//эта строчка работает!!!
-
-    // для дошкольников
-   /* NSInteger row = [indexPath row];// getter
+    // controller.title = [self.nominations[indexPath.row] title];
+    // или
+    /* NSInteger row = [indexPath row];// getter
     OSNomination * nomination = [self.nominations objectAtIndex:row];
     controller.title = [nomination title];
     */
-    // а теперь эти же 3 строчки в одной
+    // или
     //controller.title = [[self.nominations objectAtIndex:[indexPath row]] title];
     
 }
 
-
 - (void) setNaviTitle: (NSString *) title
 {
-   
-    _naviBar.title = title;
+       _naviBar.title = title;
 }
-
-
 
 
 - (void) viewWillAppear:(BOOL)animated

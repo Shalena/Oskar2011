@@ -26,11 +26,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.nominationTextField.inputView = self.picker;
+    
     
     self.titleTextField.text = self.nominee.title;
      self.companyTextField.text = self.nominee.company;
      self.detailTextField.text = self.nominee.detail;
+    
+    if (self.nominations){
+        self.nominationTextField.inputView = self.picker;
+    } else  {
+        self.nominationTextField.hidden = YES;
+    }
     
 }
 
