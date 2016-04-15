@@ -173,12 +173,6 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nomination" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Laa-6X-FZF">
-                                            <rect key="frame" x="93" y="55" width="408" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="wyl-1p-VSk" firstAttribute="leading" secondItem="Sys-u6-bjg" secondAttribute="leading" constant="15" id="5jd-rj-e6N"/>
@@ -198,7 +192,6 @@
                                     <outlet property="companyNomineeLabel" destination="iED-PJ-gCi" id="Shr-XP-xOI"/>
                                     <outlet property="dateLabel" destination="wyl-1p-VSk" id="wfk-i3-SdR"/>
                                     <outlet property="detailNomineeLabel" destination="dlv-Ev-wTu" id="P60-hz-0rS"/>
-                                    <outlet property="nominationLabel" destination="Laa-6X-FZF" id="FoJ-56-evs"/>
                                     <outlet property="titleNomineeLabel" destination="9RN-Kp-Qcv" id="Wn1-hf-hpe"/>
                                     <segue destination="0nN-4d-KiO" kind="presentation" identifier="goToFilm" id="mhg-rT-oX8"/>
                                 </connections>
@@ -230,7 +223,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xX0-eC-R1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992" y="493"/>
+            <point key="canvasLocation" x="1064" y="491"/>
         </scene>
         <!--Left View Controller-->
         <scene sceneID="eji-oe-tBO">

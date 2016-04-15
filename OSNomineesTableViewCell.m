@@ -8,9 +8,10 @@
 
 #import "OSNomineesTableViewCell.h"
 
-@interface OSNomineesTableViewCell () {
-    IBOutlet UILabel *titleLabel;
-}
+@interface OSNomineesTableViewCell ()
+//{
+//    IBOutlet UILabel *titleLabel;
+//}
 
 @property (weak, nonatomic) IBOutlet UILabel *titleNomineeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *companyNomineeLabel;
